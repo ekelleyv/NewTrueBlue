@@ -25,21 +25,73 @@
     </script>
 
     <!-- CSS -->
-    <link href="http://ivaynberg.github.com/select2/select2-3.2/select2.css" rel="stylesheet"/>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="angular-ui.min.js" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
-    <!-- Javascript -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ivaynberg.github.com/select2/select2-3.2/select2.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>
-    <script src="angular-ui.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>
     <script src="quiz.js"></script>
     <script src="ui-bootstrap-0.1.0.js"></script>
-    
+    <style type="text/css">
 
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      button {
+        width: 300px;
+        height: 60px;
+      }
+      #btn-group {
+        text-align: center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+
+    </style>
     <!-- <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> -->
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -50,9 +102,9 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
@@ -64,18 +116,8 @@
       <!-- Begin page content -->
       <div ng-controller="QuizCtrl" class="container">
         <div class="page-header">
-          <div class="row">
-            <div class="span6">
-              <h1>New True Blue</h1>
-              <p class="lead">Meet the newest members of PTC!</p>
-            </div>
-            <div class="span2" id="select-grp">
-              <div class="btn-group btn-large">
-              <button onClick="_gaq.push(['_trackEvent', 'Clicks', 'Difficulty', 'Easy'])" ng-click="changeDiff('easy')" class="btn select-btn">Easy</button>
-              <button onClick="_gaq.push(['_trackEvent', 'Clicks', 'Difficulty', 'Hard'])" ng-click="changeDiff('hard')" class="btn select-btn">Hard</button>
-            </div>
-            </div>
-          </div>
+          <h1>New True Blue</h1>
+          <p class="lead">Meet the newest members of PTC!</p>
         </div>
 
         <div class="alert alert-{{getAlertType()}}">
@@ -123,15 +165,8 @@
               </div>
             </div>
 
-            <div ng-show="isEasy()" class="btn-group btn-large btn-group-vertical">
-              <button onClick="_gaq.push(['_trackEvent', 'Clicks', 'Answer', 'Answer_Clicked'])" ng-repeat="(index, person) in current_people" ng-click="answer(index)" class="btn name-btn">{{person.name}}</button>
-            </div>
-
-            <div ng-show="!isEasy()">
-              <select ui-select2 ng-model="hard_input" data-placeholder="-- Select One --" style="width:300px">
-              <option></option>
-              <option ng-repeat="person in people" value="{{person.name}}">{{person.name}}</option>
-              </select>
+            <div class="btn-group btn-large btn-group-vertical">
+              <button onClick="_gaq.push(['_trackEvent', 'Clicks', 'Answer', 'Answer_Clicked'])" ng-repeat="(index, person) in current_people" ng-click="answer(index)" class="btn">{{person.name}}</button>
             </div>
           </div>
 
@@ -152,6 +187,5 @@
       </div>
     </div>
 
-  
   </body>
 </html>
